@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Reader with Text-to-Speech</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📖 PDF Reader</h1>
+            <p>Upload a PDF and listen with synchronized highlighting</p>
+        </div>
+
+        <div class="upload-area" id="uploadArea">
+            <div class="upload-icon">📄</div>
+            <div class="upload-text">Click to upload or drag and drop your PDF here</div>
+            <small style="color: #999;">Supports PDF files up to 50MB</small>
+            <input type="file" id="fileInput" class="file-input" accept=".pdf">
+        </div>
+
+        <div class="controls" id="controls">
+            <div class="control-group">
+                <button class="btn" id="playBtn">▶️ Play</button>
+                <button class="btn" id="pauseBtn" disabled>⏸️ Pause</button>
+                <button class="btn" id="stopBtn" disabled>⏹️ Stop</button>
+                <button class="btn" id="resetBtn">🔄 Reset</button>
+                <button class="btn" id="editBtn">✏️ Edit Mode</button>
+                <button class="btn" id="saveBtn" disabled>💾 Save Changes</button>
+            </div>
+            
+            <div class="control-group">
+                <div class="voice-control">
+                    <span>Voice:</span>
+                    <select id="voiceSelect" class="voice-select">
+                        <option value="">Loading voices...</option>
+                    </select>
+                </div>
+                
+                <div class="speed-control">
+                    <span>Speed:</span>
+                    <input type="range" class="speed-slider" id="speedSlider" min="0.5" max="2" step="0.1" value="1">
+                    <span id="speedValue">1.0x</span>
+                </div>
+            </div>
+
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+        </div>
+
+        <div class="status" id="status"></div>
+
+        <div class="content-area" id="contentArea">
+            <div class="edit-toolbar" id="editToolbar">
+                <button class="toolbar-btn" id="boldBtn"><strong>B</strong></button>
+                <button class="toolbar-btn" id="italicBtn"><em>I</em></button>
+                <button class="toolbar-btn" id="undoBtn">↶</button>
+                <button class="toolbar-btn" id="redoBtn">↷</button>
+            </div>
+            <div class="text-content" id="textContent" contenteditable="false"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
